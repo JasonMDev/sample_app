@@ -3,6 +3,6 @@
 
 | Name        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
-| Joe Smoe      | JS@example.com | $1600 |
+| Joe Smoe      | js@example.com | $1600 |
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
