@@ -4,7 +4,7 @@
 | Name        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
 | Joe Smoe      | js@example.com | foobar |
-| col 2 is      | centered      |   $12 |
+| User Test      | ut@example.com     |   password |
 | zebra stripes | are neat      |    $1 |
 
 User.find_by(email: "js@example.com")
