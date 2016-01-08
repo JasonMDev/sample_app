@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.3'
+
 #gem 'puma'
 gem 'rails',        	'4.2.4'
 gem 'bcrypt',					'3.1.10' 
@@ -33,4 +35,3 @@ group :production do
 end
 
 
-ruby '2.2.3'
