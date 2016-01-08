@@ -17,6 +17,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # Handle a successful save.
+      # Temporary message on succesful user sign-up.
+      flash[:success] = "Welcome to the sample app!"
+      # Redirect to user profile.
+      redirect_to @user
+      # | Same as above
+      #redirect_to user_url(@user)
+
     else
       render 'new'
     end
@@ -30,4 +37,3 @@ class UsersController < ApplicationController
     end
 
 end
-
