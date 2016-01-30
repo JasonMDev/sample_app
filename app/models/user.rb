@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
 
 	# NAME VALIDATION
 	# | -- Bang Method -- |
-	before_save { email.downcase! }
-	
+	before_save { email.downcase! }	
 	# | -- Original -- |
 	validates :name, presence: true, length: { maximum: 50 }
 	# | -- Original Method -- |
