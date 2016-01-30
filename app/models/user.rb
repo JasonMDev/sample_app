@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 	# Create an accessible attribute
 	attr_accessor :remember_token
 
-	# Name Validation
+	# NAME VALIDATION
 	# | -- Bang Method -- |
 	before_save { email.downcase! }
 	
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 	# | -- Equivalent -- |
 	#validates(:name, presence: true)
 
-	# Email Validation
+	# EMAIL VALIDATION
 	# | -- Does check "..com" emails -- |
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 255 }, 
@@ -22,10 +22,10 @@ class User < ActiveRecord::Base
 	# | -- Doesn't check "..com" emails -- |
 	#VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-	# Password  Validation
+	# PASSWORD VALIDATION
 	# | -- Make sure password is secure and is validated.
 	has_secure_password	
-	validates :password, presence: true, length: { minimum: 6 }	
+	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true	
 
 	# Returns the hash disgest of the given string.
 	def User.digest(string)
