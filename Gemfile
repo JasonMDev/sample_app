@@ -14,6 +14,9 @@ gem 'turbolinks',   				'2.5.3'
 gem 'jbuilder',     				'2.3.2'
 gem 'sdoc',         				'0.4.1', group: :doc
 
+# Usually only in Development Environment.
+gem 'faker',                '1.6.1'  
+
 # Development Environment
 # => $ bundle install --without production
 group :development, :test do
