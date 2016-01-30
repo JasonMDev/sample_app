@@ -5,6 +5,6 @@
 | ------------- |:-------------:| -----:|
 | Joe Smoe      | js@example.com | foobar |
 | User Test      | ut@example.com     |   password |
-| zebra stripes | are neat      |    $1 |
+| Example User | example@railstutorial.org     |    foobar |
 
 User.find_by(email: "js@example.com")

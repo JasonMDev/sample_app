@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   def index
-    @users = User.all
+    # Here the page parameter comes from params[:page], 
+    # which is generated automatically by will_paginate in index.html.erb
+    @users = User.paginate(page: params[:page])
   end
 
   def show
