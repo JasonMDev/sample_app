@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   	# | byebug debugger command.
   	#debugger  	
   	# | Use "debugger" and Rails console will be added in the
