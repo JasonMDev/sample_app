@@ -57,6 +57,9 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    carrierwave-dropbox (1.2.1)
+      carrierwave (~> 0.9)
+      dropbox-sdk (~> 1.6)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -66,6 +69,8 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     debug_inspector (0.0.2)
+    dropbox-sdk (1.6.5)
+      json
     erubis (2.7.0)
     excon (0.48.0)
     execjs (2.6.0)
@@ -121,6 +126,9 @@ GEM
       builder
       excon (~> 0.45)
       formatador (~> 0.2)
+    fog-dropbox (0.0.1)
+      dropbox-sdk
+      fog-core
     fog-dynect (0.0.2)
       fog-core
       fog-json
@@ -333,9 +341,11 @@ DEPENDENCIES
   bootstrap-will_paginate (= 0.0.10)
   byebug (= 8.0.0)
   carrierwave (= 0.10.0)
+  carrierwave-dropbox (~> 1.2)
   coffee-rails (= 4.1.0)
   faker (= 1.6.1)
   fog (= 1.37.0)
+  fog-dropbox (~> 0.0.1)
   guard-minitest (= 2.3.1)
   jbuilder (= 2.3.2)
   jquery-rails (= 4.0.5)
