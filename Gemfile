@@ -13,6 +13,9 @@ gem 'jquery-rails', 				   '4.0.5'
 gem 'turbolinks',   				   '2.5.3'
 gem 'jbuilder',     				   '2.3.2'
 gem 'sdoc',         				   '0.4.1', group: :doc
+gem 'carrierwave',             '0.10.0'
+gem 'mini_magick',             '4.4.0'
+gem 'fog',                     '1.37.0'
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
 
