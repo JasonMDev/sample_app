@@ -5,4 +5,4 @@ require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
 
-load "carrierwave/dropbox/authorize.rake"
+#load "carrierwave/dropbox/authorize.rake"
