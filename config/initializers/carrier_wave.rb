@@ -1,10 +1,13 @@
 if Rails.env.production?
   CarrierWave.configure do |config|
-    config.dropbox_app_key = ENV["APP_KEY"]
-    config.dropbox_app_secret = ENV["APP_SECRET"]
-    config.dropbox_access_token = ENV["ACCESS_TOKEN"]
-    config.dropbox_access_token_secret = ENV["ACCESS_TOKEN_SECRET"]
-    config.dropbox_user_id = ENV["USER_ID"]
-    config.dropbox_access_type = "dropbox"
+    config.fog_credentials = {
+      # Configuration for Amazon S3
+      :provider              => 'AWS',
+      :aws_access_key_id     => ENV['S3_ACCESS_KEY'],
+      :aws_secret_access_key => ENV['S3_SECRET_KEY'],
+      #Added the region in.
+      :region => ENV[’S3_REGION’]
+    }
+    config.fog_directory     =  ENV['S3_BUCKET']
   end
 end
