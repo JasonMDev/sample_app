@@ -2,6 +2,14 @@ class User < ActiveRecord::Base
   
   # Association with microposts
   has_many :microposts, dependent: :destroy
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
+  has_many :passive_relationships, class_name:  "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent:   :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower                                
 
 	# Create an accessible attribute
 	attr_accessor :remember_token, :activation_token, :reset_token
@@ -85,11 +93,36 @@ class User < ActiveRecord::Base
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
-
-  # Defines a proto-feed.
-  # See "Following users" for the full implementation.
+  
   def feed
-    Micropost.where("user_id = ?", id)
+    # Full implementation.
+    # More efficient feed implementation
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+    # Full implementation after refactoring
+    # Micropost.where("user_id IN (:following_ids) OR user_id = :user_id",
+    #                following_ids: following_ids, user_id: id)
+    # A first feed implementation
+    # Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
+    # Defines a proto-feed.
+    # Micropost.where("user_id = ?", id)
+  end
+
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  # Unfollows a user.
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
   end
 
 	private
